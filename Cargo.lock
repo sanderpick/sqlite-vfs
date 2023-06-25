@@ -92,15 +92,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "308cc39be01b73d0d18f82a0e7b2a3df85245f84af96fdddc5d202d27e47b86a"
 
 [[package]]
-name = "num_threads"
-version = "0.1.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "71a1eb3a36534514077c1e079ada2fb170ef30c47d203aa6916138cf882ecd52"
-dependencies = [
- "libc",
-]
-
-[[package]]
 name = "ppv-lite86"
 version = "0.2.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -174,7 +165,6 @@ name = "sqlite-vfs"
 version = "0.2.0"
 dependencies = [
  "log",
- "time",
 ]
 
 [[package]]
@@ -195,16 +185,6 @@ dependencies = [
  "pretty_env_logger",
  "rand",
  "sqlite-vfs",
-]
-
-[[package]]
-name = "time"
-version = "0.3.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c8d54b9298e05179c335de2b9645d061255bcd5155f843b3e328d2cfe0a5b413"
-dependencies = [
- "libc",
- "num_threads",
 ]
 
 [[package]]

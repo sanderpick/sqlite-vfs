@@ -18,7 +18,7 @@ use std::time::Duration;
 mod ffi;
 
 /// A file opened by [Vfs].
-pub trait DatabaseHandle: Sync {
+pub trait DatabaseHandle {
     /// An optional trait used to store a WAL (write-ahead log).
     type WalIndex: wip::WalIndex;
 
@@ -72,7 +72,7 @@ pub trait DatabaseHandle: Sync {
 }
 
 /// A virtual file system for SQLite.
-pub trait Vfs: Sync {
+pub trait Vfs {
     /// The file returned by [Vfs::open].
     type Handle: DatabaseHandle;
 
@@ -797,11 +797,10 @@ mod vfs {
     ) -> i32 {
         log::trace!("current_time_int64");
 
-        const UNIX_EPOCH: i64 = 24405875 * 8640000;
-        let now = time::OffsetDateTime::now_utc().unix_timestamp() + UNIX_EPOCH;
+        let now: i64 = 24405875 * 8640000;
         #[cfg(feature = "sqlite_test")]
         let now = if ffi::sqlite3_get_current_time() > 0 {
-            ffi::sqlite3_get_current_time() as i64 * 1000 + UNIX_EPOCH
+            ffi::sqlite3_get_current_time() as i64 * 1000 + now
         } else {
             now
         };
